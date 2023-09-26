@@ -27,6 +27,12 @@ class MovieService {
   getAll() {
     return Promise.resolve([...this.movies]);
   }
+
+  searchMovies(searchTerm) {
+    return Promise.resolve([
+      ...this.movies.filter((movie) => movie.title.includes(searchTerm)),
+    ]);
+  }
 }
 
 export default new MovieService();

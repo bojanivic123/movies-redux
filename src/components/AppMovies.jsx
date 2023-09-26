@@ -17,14 +17,17 @@ const AppMovies = () => {
 
     return (
         <div>
-            <ul>
-                {movies.map((movie) => (
-                    <li>
-                        <MovieRow movie={movie} key={movie.id} />
-                    </li>
-                ))}
+            {movies.length ? (
+                <ul>
+                    {movies.map((movie) => (
+                        <li>
+                            <MovieRow movie={movie} key={movie.id} />
+                        </li>
+                    ))}
 
-            </ul>
+                </ul>
+
+            ) : <p>No movies!</p>}
         </div>
     )
 }
