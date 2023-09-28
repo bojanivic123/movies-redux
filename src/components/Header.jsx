@@ -1,27 +1,26 @@
-import React, { useState } from 'react'
-import movieService from '../services/movieService';
+import React from 'react'
 import { useDispatch } from 'react-redux';
-import { setMovies } from '../store/movies/slice';
+import { performSearchMovies } from '../store/movies/slice';
 
 const Header = () => {
 
     const dispatch = useDispatch();
 
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearch = () => {
-        movieService.searchMovies(searchTerm).then((data) => dispatch(setMovies(data)))
+    const handleSearch = (searchTerm) => {
+        dispatch(performSearchMovies(searchTerm))
     }
 
     return (
-        <nav class='navbar navbar-light bg-light'>
-            <a class="navbar-brand" href="#">Movies</a>
+        <nav className='navbar navbar-light bg-light'>
+            <div className='container-fluid'>
+                <a className="navbar-brand" href="/">Movies</a>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onClick={handleSearch}>Search</button>
-            </form>
+                <form className="form-inline my-2 my-lg-0 ">
+                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => handleSearch(e.target.value)} />
+                </form>
+            </div>
         </nav>
+
     )
 }
 

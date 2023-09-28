@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import movieService from '../services/movieService'
+import React, { useEffect } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { setMovies } from '../store/movies/slice';
+import { performFetchMovies } from '../store/movies/slice';
 import MovieRow from './MovieRow';
 import { selectAllMovies } from '../store/movies/selectors';
 
@@ -12,7 +12,8 @@ const AppMovies = () => {
     const movies = useSelector(selectAllMovies)
 
     useEffect(() => {
-        movieService.getAll().then((movies) => dispatch(setMovies(movies)))
+        console.log("dispatching....")
+        dispatch(performFetchMovies())
     }, [])
 
     return (
@@ -20,8 +21,8 @@ const AppMovies = () => {
             {movies.length ? (
                 <ul>
                     {movies.map((movie) => (
-                        <li>
-                            <MovieRow movie={movie} key={movie.id} />
+                        <li className='my-3 px-3' key={movie.id}>
+                            <MovieRow movie={movie} />
                         </li>
                     ))}
 

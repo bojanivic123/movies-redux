@@ -24,15 +24,18 @@ class MovieService {
     ];
   }
 
-  getAll() {
+  // simulate API calls
+  // you should call your API here
+  getAll = () => {
     return Promise.resolve([...this.movies]);
-  }
+  };
 
-  searchMovies(searchTerm) {
+  searchMovies = (searchTerm) => {
     return Promise.resolve([
       ...this.movies.filter((movie) => movie.title.includes(searchTerm)),
     ]);
-  }
+  };
 }
 
-export default new MovieService();
+const movieService = new MovieService();
+export default movieService;

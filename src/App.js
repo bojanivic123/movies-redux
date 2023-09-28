@@ -1,11 +1,7 @@
 import AppLayout from './components/AppLayout';
 
 function App() {
-  return (
-    <div>
-      <AppLayout />
-    </div>
-  );
+  return <AppLayout />;
 }
 
 export default App;
