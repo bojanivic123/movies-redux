@@ -12,7 +12,6 @@ const AppMovies = () => {
     const movies = useSelector(selectAllMovies)
 
     useEffect(() => {
-        console.log("dispatching....")
         dispatch(performFetchMovies())
     }, [])
 
